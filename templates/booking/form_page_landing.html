@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags navigation_tags wagtailimages_tags %}
+
+{% block body_class %}
+dark:bg-secondary dark:text-gray-200
+{% endblock body_class %}
+
+{% block header %}
+{% include "parts/header.html" with class="dark:bg-gray-800 sticky top-0" %}
+{% endblock header %}
+
+
+{% block content %}
+<div class="container sm:px-4  grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-800 dark:text-gray-100">
+    <div class="flex flex-col justify-between">
+        <div class="space-y-2">
+            <h2 class="text-4xl font-bold leading-tight lg:text-5xl">{{ page.title }}</h2>
+            <div class="dark:text-gray-400">
+                {{ page.thank_you_text|richtext }}
+
+            </div>
+        </div>
+        {% comment %} <img src="assets/svg/doodle.svg" alt="Contact our customer support" class="p-6 h-52 md:h-64"> {% endcomment %}
+    </div>
+</div>
+
+{% endblock content %}
+
+
+

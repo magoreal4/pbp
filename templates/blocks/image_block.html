@@ -1,0 +1,9 @@
+{% load wagtailimages_tags %}
+
+
+    <figure class="relative text-center"> 
+        {% image self.image fill-420x260 format-webp-lossless loading="lazy" class="rounded-lg filtro"%}
+        {% comment %} {% image self.image fill-400x280 loading="lazy" %} {% endcomment %}
+        <figcaption class="w-11/12 centrear font-medium font-specialElite text-3xl">{{ self.caption|upper }}</figcaption>
+    </figure>
+

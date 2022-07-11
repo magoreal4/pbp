@@ -1,0 +1,36 @@
+{% load navigation_tags wagtailcore_tags wagtailsettings_tags svg %}
+
+{% get_settings %}
+{% comment %} {% get_site_root as site_root %} {% endcomment %}
+
+{% widthratio menuitems|length 2 1 as midpoint %}
+
+{% comment %} {% if menuitems|length == 0 %}
+<a rel="noopener noreferrer" href="#" aria-label="Back to homepage" class="flex items-center p-2">
+    <div class="w-8 h-8">
+    {% if settings.base.Logo.logo %}
+        {% svg settings.base.Logo.logo.filename|cut:".svg" %}
+    {% endif %}
+    </div>
+</a>            
+{% endif %} {% endcomment %}
+
+
+{% for menuitem in menuitems %}
+    <li class="flex">
+        <a href="{% pageurl menuitem %}" class="flex items-center text-lg px-4 -mb-1 border-b-2 dark:border-transparent{% if menuitem.active %} active{% endif %}">{{ menuitem.title|capfirst|cut:" " }}</a>
+    </li>
+    {% comment %} {% if forloop.counter == midpoint|add:"0" or menuitems|length == 1 %} 
+</ul>
+<!-- Logotipo -->
+<a  href="/" aria-label="Back to homepage" class="flex items-center p-2 ">
+    <div class="w-8 h-8">
+    {% if settings.base.Logo.logo %}
+        {% svg settings.base.Logo.logo.filename|cut:".svg" %}
+    {% endif %}
+    </div>
+</a>
+<ul class="hidden space-x-3 md:flex md:w-1/2 md:justify-center">
+    {% endif %} {% endcomment %}
+
+{% endfor %}

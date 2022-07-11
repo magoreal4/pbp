@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags custom_tags static svg%}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/datepicker.min.css' %}">
+
+{% endblock extra_css %}
+
+{% block body_class %}
+dark:bg-secondary dark:text-gray-200
+{% endblock body_class %}
+
+{% block header %}
+{% include "parts/header.html" with class="dark:bg-gray-800 sticky top-0" %}
+{% endblock header %}
+
+
+{% block content %}
+<div class="container sm:px-4 max-w-screen-xl px-8 py-12 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-800 dark:text-gray-100">
+
+    <div class="w-full md:w-3/4 mx-auto">
+        <h2 class="text-4xl font-bold leading-tight lg:text-5xl ">{{ page.title }}</h2>
+        <div class="dark:text-gray-400">
+            {% if page.intro %}
+            <p class="intro">{{ page.intro|richtext }}</p>
+            {% endif %}
+            {% if page.body %}
+            {{ page.body }}
+            {% endif %}
+        </div>
+    </div>
+        
+
+    
+    <form id="formReservas" action="{% pageurl page %}" method="POST" >
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <button type="submit" >
+            Realizar Reserva
+        </button>
+    </form>
+</div>
+{% endblock content %}
+
+
+{% block extra_js %}
+<script>
+var fechas = Array()
+{% for key, value in results.items %}
+    {% if key == 'Fecha' %}
+        {% for fecha in value %}
+        fechas.push(new Date({{fecha|fechas_datepicker}}));
+        {% endfor %}
+    {%endif%}
+{% endfor %} 
+</script>
+
+<script type="text/javascript" src="{% static 'js/booking.js' %}"></script>
+
+{% endblock extra_js %}    

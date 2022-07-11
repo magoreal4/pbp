@@ -1,0 +1,77 @@
+{% load navigation_tags static wagtailuserbar %}
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8">
+{% block meta_tag %}
+<title>
+  {% block title %}
+    {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+  {% endblock %}
+  {% block title_suffix %}
+    | Paint Ball Park
+  {% endblock %}
+</title>
+<meta name="description" content="{{ page.search_description }}" />
+{% endblock %}
+{% if debug %}
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+{% endif %}
+<meta name="description" content="{% if page.search_description %}{{ page.search_description }}{% endif %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% block extra_css %}
+
+{% endblock extra_css %}
+</head>
+
+<body class="{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}">
+{% comment %} <body class=""> {% endcomment %}
+{% wagtailuserbar %}
+
+{% block header %}
+
+{% endblock header %}
+
+{% block breadcrumbs %}
+    {# breadcrumbs is defined in templatetags/navigation_tags.py #}
+    {% breadcrumbs %}
+{% endblock breadcrumbs %}
+
+<main class="bg-secondary ">
+    {% block content %}
+
+    {% endblock content %}
+</main>
+
+{% include "parts/footer.html" with titulo=self.title class="effect3d"%}
+
+<script type="text/javascript">
+/* Menu */
+var main = document.getElementsByTagName("main");
+var footer = document.getElementsByTagName("footer");
+
+window.addEventListener('click', function (event) {
+  if (botonMenu.contains(event.target)) {
+    menu.classList.toggle("translate-x-full");
+    main[0].classList.toggle("effect3d");
+    footer[0].classList.toggle("effect3d");
+  } else {
+    if (!menu.classList.contains("translate-x-full") && !menu.contains(event.target)) {
+      menu.classList.toggle("translate-x-full");
+      main[0].classList.toggle("effect3d");
+      footer[0].classList.toggle("effect3d");
+    }
+  }
+});
+</script>
+
+{% block extra_js %}
+
+{% endblock extra_js %}    
+
+</body>
+</html>
