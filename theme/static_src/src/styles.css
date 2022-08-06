@@ -44,6 +44,16 @@
         -webkit-transition: all 0.5s;
         transition: all 0.5s;
     }
+    body {
+        @apply overflow-x-hidden;
+        /* -webkit-perspective: 2500px;
+        perspective: 2500px; */
+    }
+}
+
+.perspective {
+    -webkit-perspective: 2500px;
+    perspective: 2500px;
 }
 
 .qs-centered {
@@ -52,33 +62,18 @@
 }
 
 .qs-datepicker-container {
-    @apply !font-sans md:!text-2xl
+    @apply -mt-10
 }
 
 #formReservas  {
-    @apply pt-64 md:pt-80 max-w-lg mx-auto
+    @apply pt-6 md:pt-10 max-w-2xl mx-auto
 }
 
 .errorlist > li {
     @apply mb-0 text-red-500
 }
 
-
 @layer components {
-
-#menu {
-    @apply 
-    absolute top-0 right-0 md:relative
-    bg-gray-800
-    w-60 md:w-full 
-    h-screen md:h-20 
-    mx-auto
-    flex flex-col md:flex-row 
-    md:justify-center
-    items-center
-    pt-32 md:pt-0 
-}
-
 
 #list_serv div > div > p  {
     @apply mt-3
@@ -114,7 +109,7 @@
 
 .posDesc {
     @apply absolute top-1/2 left-1/2 transform -translate-x-1/2
-    }    
+    }
 }
 
 .sombraBlanca {
@@ -131,6 +126,27 @@
     -webkit-filter: drop-shadow(6px 6px 4px rgba(255, 255, 255, .7));
     filter: drop-shadow(6px 6px 4px rgba(255, 255, 255, .7));
   }
+
+.responsive-object {
+    @apply relative
+}
+
+.responsive-object iframe,
+.responsive-object object,
+.responsive-object embed {
+    @apply absolute top-0 left-0 w-full h-full
+}
+
+.effect3d {
+    @apply opacity-70;
+    transform-style: preserve-3d;  
+    -webkit-transform: translate3d(0, 0, -100px) rotateY(20deg);
+	transform: translate3d(0, 0, -100px) rotateY(20deg);
+}
+
+.frameCard {
+    @apply dark:bg-gray-800 p-12 lg:px-24 border-2 rounded-lg
+}
 
 .img-layer--1 {
     background-color: rgba(255, 255, 255, 0.7);
@@ -273,29 +289,6 @@
     100% {
         clip-path: polygon(0 35%, 0 50%, 100% 50%, 100% 35%);
     }
-}
-
-.responsive-object {
-    @apply relative
-}
-
-.responsive-object iframe,
-.responsive-object object,
-.responsive-object embed {
-    @apply absolute top-0 left-0 w-full h-full
-}
-
-body {
-    @apply overflow-x-hidden;
-    -webkit-perspective: 2500px;
-	perspective: 2500px;
-}
-
-.effect3d {
-    @apply opacity-70;
-    transform-style: preserve-3d;  
-    -webkit-transform: translate3d(0, 0, -100px) rotateY(20deg);
-	transform: translate3d(0, 0, -100px) rotateY(20deg);
 }
 
 

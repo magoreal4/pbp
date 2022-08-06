@@ -2,7 +2,6 @@
 {% load wagtailcore_tags custom_tags static svg%}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/datepicker.min.css' %}">
 
 {% endblock extra_css %}
 
@@ -16,32 +15,31 @@ dark:bg-secondary dark:text-gray-200
 
 
 {% block content %}
-<div class="container sm:px-4 max-w-screen-xl px-8 py-12 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:bg-gray-800 dark:text-gray-100">
-
-    <div class="w-full md:w-3/4 mx-auto">
-        <h2 class="text-4xl font-bold leading-tight lg:text-5xl ">{{ page.title }}</h2>
-        <div class="dark:text-gray-400">
-            {% if page.intro %}
-            <p class="intro">{{ page.intro|richtext }}</p>
-            {% endif %}
+<section class="sm:px-4 px-2 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 dark:text-gray-100">
+    <div class="md:container max-w-xl py-8 mx-auto lg:px-8 lg:max-w-7xl">
+        <h1 class="text-center sm:text-5xl text-primary">
+        {% if self.subtitle %}
+            {{ self.subtitle|upper }}
+        {% else %}
+            {{ self.title|upper }}
+        {% endif %}
+        </h1>
+        <h2 class="font-sans text-2xl max-w-5xl mx-auto mt-4 text-center dark:text-gray-100">
             {% if page.body %}
             {{ page.body }}
             {% endif %}
-        </div>
-    </div>
-        
+        </h2>
+	</div>
 
-    
-    <form id="formReservas" action="{% pageurl page %}" method="POST" >
+    <form id="formReservas" class="frameCard pt-52" action="{% pageurl page %}" method="POST" >
         {% csrf_token %}
         {{ form.as_ul }}
         <button type="submit" >
             Realizar Reserva
         </button>
     </form>
-</div>
+</section>
 {% endblock content %}
-
 
 {% block extra_js %}
 <script>

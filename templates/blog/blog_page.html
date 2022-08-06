@@ -13,20 +13,14 @@ dark:bg-secondary dark:text-gray-200
 {% block content %}
 
 <article class="container px-2 md:px-12 lg:px-36 pb-12 mx-auto space-y-12 dark:text-gray-50">
-	<div class="dark:bg-gray-800 p-12 lg:px-24 border-2 rounded-lg">
+	<div class="frameCard">
 		<div class="mx-auto mb-4 text-center">
-			{% comment %} <p class="text-xs font-semibold tracking-wider uppercase">#TailwindCSS</p> {% endcomment %}
 			<h1 class="font-bold leading-tight">{{self.title|upper}}</h1>
-			{% comment %} <h1 class="text-4xl font-bold leading-tight md:text-5xl">Interdum et malesuada fames ac ante ipsum primis in faucibus?</h1> {% endcomment %}
 			<p class="text-sm dark:text-gray-400">
-				{% comment %} by
-				<a rel="noopener noreferrer" href="#" target="_blank" class="underline dark:text-pink-400">
-					<span itemprop="name">Leroy Jenkins</span>
-				</a>on {% endcomment %}
 				<time datetime="{{self.date_published.isoformat}}">{{self.date_published}}</time>
 			</p>
 		</div>
-		{% comment %} <h2 class="font-bold leading-tight">{{self.subtitle|capfirst}}</h1> {% endcomment %}
+
 		<div class="space-y-3 mx-auto prose dark:prose-invert">
 			{% image self.image fill-420x260 format-webp-lossless loading="lazy" class="rounded-lg w-full lg:w-1/2 my-4 mx-auto md:mr-4 md:float-left"%}
 			<p class="md:pt-6"> {{self.introduction}} </p>

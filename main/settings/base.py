@@ -15,9 +15,6 @@ import os
 # import environ
 
 
-
-
-
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -65,6 +62,8 @@ INSTALLED_APPS = [
     'generic_chooser',
     'svg',
 ]
+
+SITE_ID = 1
 
 SVG_DIRS=[
     os.path.join(BASE_DIR, './media/svg')
@@ -142,7 +141,7 @@ TIME_ZONE = "America/La_Paz"
 
 USE_I18N = True
 
-# USE_L10N = True
+USE_L10N = True
 
 USE_TZ = True
 
@@ -204,19 +203,27 @@ DATE_INPUT_FORMATS = [
     '%d/%m/%y',
 ]
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'mail.paintballparkscz.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST = 'paintballparkscz.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
+# EMAIL_PORT = 26
 EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 # EMAIL_HOST_USER = 'admin@paintballparkscz.com'
-EMAIL_HOST_PASSWORD = 'Uruswayra13'
-RECIPIENT_ADDRESS = 'paintballparkscz@gmail.com'
+# EMAIL_HOST_PASSWORD = 'ojalaque'
+EMAIL_HOST_USER = 'paintballparkscz@gmail.com'
+EMAIL_HOST_PASSWORD = 'vxqivwbqadvneqwq'
+# RECIPIENT_ADDRESS = 'paintballparkscz@gmail.com'
+# RECIPIENT_ADDRESS = 'admin@paintballparkscz.com'
 
 # EMAIL SETTINGS
 
-EMAIL_INBOX = 'admin@paintballparkscz.com'
+# EMAIL_INBOX = 'admin@paintballparkscz.com'
 
+# paintballparkscz@gmail.com
+# paintballparkscz16!
 
 
 
