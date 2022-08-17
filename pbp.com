@@ -1,7 +1,7 @@
 # /etc/nginx/sites-available/pbp
 
 server {
-    server_name paintballparkscz.com www.paintballparkscz.com;
+    server_name paintballparkscz.test www.paintballparkscz.test;
 
     location = /favicon.ico { 
         access_log off; 
@@ -10,12 +10,12 @@ server {
 
     location /static/ {
         autoindex on;
-        root /root/pbp/staticfiles/;
+        root /home/gonzalo/pbp/staticfiles/;
         }
     
     location /media/ {
         autoindex on;
-        root /root/pbp/media/;
+        root /home/gonzalo/pbp/media/;
         }
 
     location / {
